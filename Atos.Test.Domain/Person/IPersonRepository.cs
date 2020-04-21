@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Atos.Test.Domain.Person
 {
     public interface IPersonRepository
     {
-        void Add(Infrastructure.Entity.People entity);
+        void Add(PersonDto entity);
 
-        void Edit(Infrastructure.Entity.People entity);
+        void Edit(PersonDto entity);
 
         void Remove(int id);
 

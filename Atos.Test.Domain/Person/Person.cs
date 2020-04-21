@@ -28,10 +28,10 @@
         public void Add(IPersonRepository personRepository)
         {
             int? bankId = personRepository.GetBankID(this._commandBankName);
-            personRepository.Add(new Infrastructure.Entity.People
+            personRepository.Add(new PersonDto
             {
                 Name = this._commandName,
-                IDBank = bankId,
+                BankID = bankId,
                 AccountBalance = this._commandAccountBalance
             });
         }
@@ -39,11 +39,11 @@
         public void Edit(string name, string bankName, int accountBalance, IPersonRepository personRepository)
         {
             int? bankId = personRepository.GetBankID(bankName);
-            personRepository.Edit(new Infrastructure.Entity.People
+            personRepository.Edit(new PersonDto
             {
                 ID = this._commandID,
                 Name = name,
-                IDBank = bankId,
+                BankID = bankId,
                 AccountBalance = accountBalance
             });
         }

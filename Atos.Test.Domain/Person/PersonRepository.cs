@@ -1,8 +1,7 @@
 ﻿using Atos.Test.Infrastructure;
+using Atos.Test.Infrastructure.Entity;
 using System.Collections.Generic;
 using System.Linq;
-using Atos.Test.Infrastructure.Entity;
-using Microsoft.EntityFrameworkCore;
 
 namespace Atos.Test.Domain.Person
 {
@@ -15,17 +14,22 @@ namespace Atos.Test.Domain.Person
             _context = context;
         }
 
-        public void Add(Infrastructure.Entity.People entity)
+        public void Add(PersonDto entity)
         {
-            this._context.People.Add(entity);
+            this._context.People.Add(new People()
+            {
+                AccountBalance = entity.AccountBalance,
+                IDBank = entity.BankID,
+                Name = entity.Name
+            });
             this._context.SaveChanges();
         }
 
-        public void Edit(Infrastructure.Entity.People entity)
+        public void Edit(PersonDto entity)
         {
             var personEntity = GetEntity(entity.ID);
             personEntity.Name = entity.Name;
-            personEntity.IDBank = entity.IDBank;
+            personEntity.IDBank = entity.BankID;
             personEntity.AccountBalance = entity.AccountBalance;
             this._context.SaveChanges();
         }
@@ -45,7 +49,8 @@ namespace Atos.Test.Domain.Person
                 BankName = x.Bank.Name,
                 AccountBalance = x.AccountBalance,
                 BankID = x.IDBank
-            }).FirstOrDefault(x=>x.ID == id);
+            }).FirstOrDefault(x => x.ID == id);
+
             return personDto;
         }
 

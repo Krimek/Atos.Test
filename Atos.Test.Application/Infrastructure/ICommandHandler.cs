@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Atos.Test.Application.Infrastructure
+﻿namespace Atos.Test.Application.Infrastructure
 {
     public interface ICommandHandler <in T>
     {
