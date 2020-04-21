@@ -45,8 +45,8 @@ namespace Atos.Test.Domain.Person
                 BankName = x.Bank.Name,
                 AccountBalance = x.AccountBalance,
                 BankID = x.IDBank
-            }).ToList();
-            return personDto.FirstOrDefault(x => x.ID == id);
+            }).FirstOrDefault(x=>x.ID == id);
+            return personDto;
         }
 
         public IEnumerable<PersonDto> GetAll()

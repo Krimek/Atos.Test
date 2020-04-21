@@ -26,12 +26,12 @@
                 <td>@person.BankName</td>
                 <td>@person.AccountBalance</td>
                 <td>
-                    <a asp-page="./EditPeople" asp-route-Id="@person.ID">Edit</a> |
+                    <a asp-page="./EditPerson" asp-route-Id="@person.ID">Edit</a> |
                     <button type="submit" asp-page-handler="delete" asp-route-id="@person.ID"> delete </button>
                 </td>
             </tr>
         }
         </tbody>
     </table>
-    <a asp-page="/CreatePeople">Create New</a>
+    <a asp-page="/CreatePerson">Create New</a>
 </form>
