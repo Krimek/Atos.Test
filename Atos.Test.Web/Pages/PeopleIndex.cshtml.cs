@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Atos.Test.Application.Features.RemovePerson;
 using Atos.Test.Application.Infrastructure;
-using Atos.Test.Presentation.People;
+using Atos.Test.Presentation.Person;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,16 +9,16 @@ namespace Atos.Test.Web.Pages
 {
     public class PeopleIndexModel : PageModel
     {
-        private readonly IPeoplePresentationRepository _peoplePresentationRepository;
+        private readonly IPersonPresentationRepository _personPresentationRepository;
         private readonly ICommandHandler<RemovePersonCommand> _commandHandler;
 
-        public PeopleIndexModel(IPeoplePresentationRepository peoplePresentationRepository, ICommandHandler<RemovePersonCommand> commandHandler)
+        public PeopleIndexModel(IPersonPresentationRepository personPresentationRepository, ICommandHandler<RemovePersonCommand> commandHandler)
         {
-            this._peoplePresentationRepository = peoplePresentationRepository;
+            this._personPresentationRepository = personPresentationRepository;
             this._commandHandler = commandHandler;
         }
 
-        public IEnumerable<PeopleModel> People { get; set; }
+        public IEnumerable<PersonModel> People { get; set; }
 
         public IActionResult OnPostDelete(int id)
         {
@@ -28,7 +28,7 @@ namespace Atos.Test.Web.Pages
 
         public void OnGet()
         {
-            People = this._peoplePresentationRepository.GetAll();
+            People = this._personPresentationRepository.GetAll();
         }
     }
 }

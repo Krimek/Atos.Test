@@ -1,24 +1,22 @@
-﻿using Atos.Test.Domain.Person;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Atos.Test.Domain.Person;
 
-namespace Atos.Test.Presentation.People
+namespace Atos.Test.Presentation.Person
 {
-    public class PeoplePresentationRepository : IPeoplePresentationRepository
+    public class PersonPresentationRepository : IPersonPresentationRepository
     {
         private readonly IPersonRepository _personRepository;
 
-        public PeoplePresentationRepository(IPersonRepository personRepository)
+        public PersonPresentationRepository(IPersonRepository personRepository)
         {
             this._personRepository = personRepository;
         }
 
-        public PeopleModel Get(int id)
+        public PersonModel Get(int id)
         {
             var entity = this._personRepository.Get(id);
-            return new PeopleModel
+            return new PersonModel
             {
                 ID = entity.ID,
                 Name = entity.Name,
@@ -27,11 +25,11 @@ namespace Atos.Test.Presentation.People
             };
         }
 
-        public IEnumerable<PeopleModel> GetAll()
+        public IEnumerable<PersonModel> GetAll()
         {
             var entities = this._personRepository.GetAll();
 
-            return entities.Select(entity => new PeopleModel
+            return entities.Select(entity => new PersonModel
             {
                 ID = entity.ID,
                 Name = entity.Name,

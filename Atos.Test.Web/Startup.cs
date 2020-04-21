@@ -4,7 +4,7 @@ using Atos.Test.Application.Features.RemovePerson;
 using Atos.Test.Application.Infrastructure;
 using Atos.Test.Domain.Person;
 using Atos.Test.Infrastructure;
-using Atos.Test.Presentation.People;
+using Atos.Test.Presentation.Person;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +34,7 @@ namespace Atos.Test.Web
             services.AddScoped<ICommandHandler<AddPersonCommand>, AddPersonCommandHandler>();
             services.AddScoped<ICommandHandler<EditPersonCommand>, EditPersonCommandHandler>();
             services.AddScoped<ICommandHandler<RemovePersonCommand>, RemovePersonCommandHandler>();
-            services.AddScoped<IPeoplePresentationRepository, PeoplePresentationRepository>();
+            services.AddScoped<IPersonPresentationRepository, PersonPresentationRepository>();
             services.AddScoped<IPersonFactory, PersonFactory>();
             services.AddScoped<IPersonRepository, PersonRepository>();
         }

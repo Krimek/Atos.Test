@@ -1,16 +1,16 @@
 ﻿using Atos.Test.Application.Features.AddPerson;
 using Atos.Test.Application.Infrastructure;
-using Atos.Test.Presentation.People;
+using Atos.Test.Presentation.Person;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Atos.Test.Web.Pages
 {
-    public class CreatePeopleModel : PageModel
+    public class CreatePersonModel : PageModel
     {
         private readonly ICommandHandler<AddPersonCommand> _commandHandler;
 
-        public CreatePeopleModel(ICommandHandler<AddPersonCommand> commandHandler)
+        public CreatePersonModel(ICommandHandler<AddPersonCommand> commandHandler)
         {
             this._commandHandler = commandHandler;
         }
@@ -21,7 +21,7 @@ namespace Atos.Test.Web.Pages
         }
 
         [BindProperty]
-        public PeopleModel PeopleModel { get; set; }
+        public PersonModel PersonModel { get; set; }
 
         public IActionResult OnPost()
         {
@@ -30,7 +30,7 @@ namespace Atos.Test.Web.Pages
                 return Page();
             }
 
-            this._commandHandler.Handle(new AddPersonCommand(PeopleModel.Name, PeopleModel.BankName, PeopleModel.AccountBalance));
+            this._commandHandler.Handle(new AddPersonCommand(PersonModel.Name, PersonModel.BankName, PersonModel.AccountBalance));
 
             return RedirectToPage("/PeopleIndex");
         }

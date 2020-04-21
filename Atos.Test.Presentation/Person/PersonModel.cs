@@ -1,6 +1,6 @@
-﻿namespace Atos.Test.Presentation.People
+﻿namespace Atos.Test.Presentation.Person
 {
-    public class PeopleModel
+    public class PersonModel
     {
         public int ID { get; set; }
 

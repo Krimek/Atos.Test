@@ -1,0 +1,16 @@
+﻿@page 
+@model CreatePersonModel
+@{
+    ViewData["Title"] = "Create Person";
+}
+
+<div id="form-window">
+    <h1 id="form-h1">Create Person</h1>
+
+    <form method="post">
+        <p class="form-paragraph"><strong>Name:</strong><br /> <input class="form-field" asp-for="PersonModel.Name" /><br /></p>
+        <p class="form-paragraph"><strong>Bank Name:</strong><br /> <input class="form-field" asp-for="PersonModel.BankName" /><br /></p>
+        <p class="form-paragraph"><strong>Account Balance :</strong><br /> <input class="form-field" asp-for="PersonModel.AccountBalance" /><br /></p>
+        <input class="form-button" value="Submit" type="submit" />
+    </form>
+</div>
